@@ -1,0 +1,151 @@
+* {
+    font:           "Inter 13";
+
+    bg:             #1e1b1e;
+    bg-alt:         #252225;
+    bg-hover:       #2a272a;
+    fg:             #e8e6ec;
+    fg-sub:         #9a98a8;
+    accent:         #cc1a20;
+    accent-bg:      #cc1a201f;
+    accent-border:  #cc1a204d;
+    gold:           #c89414;
+    gold-border:    #c8941426;
+
+    background-color: transparent;
+    text-color:       @fg;
+    border:           0px;
+    margin:           0px;
+    padding:          0px;
+    spacing:          0px;
+}
+
+window {
+    background-color: @bg;
+    border-radius:    10px;
+    border:           1px solid;
+    border-color:     @gold-border;
+    width:            480px;
+    padding:          10px;
+}
+
+mainbox {
+    background-color: transparent;
+    spacing:          8px;
+}
+
+/* --- Search bar --- */
+
+inputbar {
+    background-color: @bg-alt;
+    border-radius:    6px;
+    padding:          7px 12px;
+    spacing:          8px;
+    children:         [prompt, entry];
+}
+
+prompt {
+    background-color: transparent;
+    text-color:       @gold;
+    font:             "Inter Bold 13";
+}
+
+entry {
+    background-color:  transparent;
+    text-color:        @fg;
+    placeholder:       "Search...";
+    placeholder-color: @fg-sub;
+    cursor:            text;
+}
+
+/* --- Results list --- */
+
+listview {
+    background-color: transparent;
+    columns:          1;
+    lines:            8;
+    scrollbar:        false;
+    spacing:          2px;
+    fixed-height:     false;
+    padding:          4px 0px;
+}
+
+element {
+    border-radius: 6px;
+    padding:       7px 12px;
+    spacing:       8px;
+    orientation:   horizontal;
+    children:      [element-icon, element-text];
+}
+
+element-icon {
+    background-color: transparent;
+    size:             18px;
+    vertical-align:   0.5;
+}
+
+element-text {
+    background-color: transparent;
+    vertical-align:   0.5;
+}
+
+/* Normal / unselected */
+element normal.normal,
+element alternate.normal {
+    background-color: transparent;
+    text-color:       @fg;
+}
+
+/* Selected — Ferrari red accent, mirrors active workspace style */
+element selected.normal {
+    background-color: @accent-bg;
+    text-color:       @accent;
+    border:           1px solid;
+    border-color:     @accent-border;
+}
+
+/* Active entries */
+element normal.active,
+element alternate.active {
+    background-color: @accent-bg;
+    text-color:       @accent;
+}
+
+element selected.active {
+    background-color: #cc1a2033;
+    text-color:       @accent;
+}
+
+/* Urgent */
+element normal.urgent,
+element alternate.urgent {
+    background-color: transparent;
+    text-color:       @accent;
+}
+
+element selected.urgent {
+    background-color: #cc1a2033;
+    text-color:       @accent;
+}
+
+/* --- Scrollbar (shown if you enable it) --- */
+scrollbar {
+    width:        4px;
+    border:       0px;
+    handle-color: @accent;
+    handle-width: 4px;
+    padding:      0px;
+}
+
+/* --- Message box (e.g. errors) --- */
+message {
+    background-color: @bg-alt;
+    border-radius:    6px;
+    padding:          8px 12px;
+}
+
+textbox {
+    background-color: transparent;
+    text-color:       @fg-sub;
+}
+

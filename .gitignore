@@ -1,0 +1,23 @@
+# Electron apps
+google-chrome/
+YouTube\ Music/
+
+# Development & Package Managers
+npm/
+yay/
+go/
+
+# App State & Workspaces
+obsidian/
+zsh/.zcompdump
+
+# System & Desktop Environment
+pulse/
+systemd/
+dconf/
+gtk-3.0/
+wireplumber/
+mimeapps.list
+
+# Misc
+simple-update-notifier/

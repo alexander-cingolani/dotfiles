@@ -1,0 +1,91 @@
+# ~/.config/yazi/theme.toml
+
+[mgr]
+cwd = { fg = "#C89414", bold = true }
+
+# Find / Search
+find_keyword  = { fg = "#C89414", bold = true, italic = true, underline = true }
+find_position = { fg = "#CC1A20", bg = "reset", bold = true, italic = true }
+
+# Markers
+marker_copied   = { fg = "#5A8A65", bg = "#5A8A65" }
+marker_cut      = { fg = "#CC1A20", bg = "#CC1A20" }
+marker_marked   = { fg = "#7A9AAA", bg = "#7A9AAA" }
+marker_selected = { fg = "#C89414", bg = "#C89414" }
+
+# Border
+border_symbol = "│"
+border_style  = { fg = "#3B383B" }
+
+[tabs]
+active   = { fg = "#111014", bg = "#C89414", bold = true }
+inactive = { fg = "#7A9AAA", bg = "#2A272A" }
+
+[mode]
+normal_main = { fg = "#111014", bg = "#CC1A20", bold = true }
+normal_alt  = { fg = "#CC1A20", bg = "#2A272A" }
+
+select_main = { fg = "#111014", bg = "#C89414", bold = true }
+select_alt  = { fg = "#C89414", bg = "#2A272A" }
+
+unset_main = { fg = "#111014", bg = "#5A8A8E", bold = true }
+unset_alt  = { fg = "#5A8A8E", bg = "#2A272A" }
+
+[status]
+separator_style = { fg = "#2A272A", bg = "#2A272A" }
+
+# Permissions
+perm_type  = { fg = "#7A9AAA" }
+perm_read  = { fg = "#C89414", bold = true }
+perm_write = { fg = "#CC1A20", bold = true }
+perm_exec  = { fg = "#5A8A65", bold = true }
+perm_sep   = { fg = "#555255" }
+
+# Progress
+progress_label  = { fg = "#E8E6EC", bold = true }
+progress_normal = { fg = "#7A9AAA", bg = "#2A272A" }
+progress_error  = { fg = "#CC1A20", bg = "#2A272A" }
+
+[pick]
+border   = { fg = "#CC1A20" }
+active   = { fg = "#C89414", bold = true }
+inactive = {}
+
+[input]
+border   = { fg = "#CC1A20" }
+title    = { fg = "#C89414" }
+value    = { fg = "#E8E6EC" }
+selected = { reversed = true }
+
+[completion]
+border   = { fg = "#3B383B" }
+active   = { fg = "#111014", bg = "#C89414" }
+inactive = { fg = "#9A98A8" }
+
+[tasks]
+border  = { fg = "#3B383B" }
+title   = { fg = "#C89414" }
+hovered = { underline = true }
+
+[which]
+mask            = { bg = "#1E1B1E" }
+cand            = { fg = "#7A9AAA" }
+rest            = { fg = "#555255" }
+desc            = { fg = "#C89414" }
+separator       = "  "
+separator_style = { fg = "#3B383B" }
+
+[help]
+on      = { fg = "#CC1A20" }
+run     = { fg = "#7A9AAA" }
+desc    = { fg = "#9A98A8" }
+hovered = { bg = "#3B383B", bold = true }
+footer  = { fg = "#111014", bg = "#C89414" }
+
+[filetype]
+rules = [
+  { name = "*/", fg = "#C89414", bold = true },
+  { name = "*.lua",   fg = "#7A9AAA" },
+  { name = "*.md",    fg = "#D4780A" },
+  { name = "*", fg = "#E8E6EC" }
+]
