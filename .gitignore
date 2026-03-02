@@ -10,7 +10,7 @@ go/
 # App State & Workspaces
 obsidian/
 zsh/.zcompdump
-
+gh/
 # System & Desktop Environment
 pulse/
 systemd/
