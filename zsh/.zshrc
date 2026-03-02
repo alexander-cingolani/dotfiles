@@ -47,3 +47,17 @@ alias pcleanup='sudo pacman -Rns $(pacman -Qdtq)'
 bindkey -e
 
 eval "$(starship init zsh)"
+
+rm() {
+  local args="$*"
+  if [[ "$args" == *"-rf"* ]] || [[ "$args" == *"-fr"* ]]; then
+    read -r "confirm?⚠️  rm -rf: Are you sure? (y/N): "
+    if [[ "$confirm" == "y" || "$confirm" == "Y" ]]; then
+      command rm "$@"
+    else
+      echo "Aborted."
+    fi
+  else
+    command rm "$@"
+  fi
+}
