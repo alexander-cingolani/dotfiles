@@ -2,7 +2,6 @@
 -- ==========================================
 vim.opt.number = true
 vim.opt.termguicolors = true
-vim.cmd.colorscheme("habamax")
 vim.opt.relativenumber = true
 vim.cmd.colorscheme("scuderia")
 
@@ -24,10 +23,10 @@ vim.g.maplocalleader = " "
 -- ==========================================
 
 vim.keymap.set("n", "<leader>p", function()
-  vim.fn.jobstart({ "xdg-open", vim.fn.expand("%:p") })
+    vim.fn.jobstart({ "xdg-open", vim.fn.expand("%:p") })
 end, { desc = "Open file in browser" })
 
--- 5. 
+-- 5.
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.loop or vim.uv).fs_stat(lazypath) then
     vim.fn.system({
@@ -39,10 +38,9 @@ end
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
     spec = {
-	{import = "plugins" },
+        { import = "plugins" },
     },
     rocks = {
         hererocks = false,
     }
 })
-
