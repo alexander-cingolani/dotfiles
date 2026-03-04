@@ -12,6 +12,7 @@ return {
         
         require("neo-tree").setup({
             filesystem = {
+                use_libuv_file_watcher = true, -- Automatically refresh on file changes
                 filtered_items = {
                     visible = true, -- Show hidden files by default
                     hide_dotfiles = false,
