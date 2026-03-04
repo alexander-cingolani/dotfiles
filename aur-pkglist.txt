@@ -1,0 +1,7 @@
+bluetuith-bin
+google-chrome
+grimblast-git
+libinput-gestures
+pear-desktop
+python-pywal16
+yay
