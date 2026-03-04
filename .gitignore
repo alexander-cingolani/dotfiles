@@ -17,6 +17,10 @@ pulse/
 systemd/
 dconf/
 gtk-3.0/
+gtk-4.0/
+celluloid/
+mpv/
+gthumb/
 wireplumber/
 mimeapps.list
 
