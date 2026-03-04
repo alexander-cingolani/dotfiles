@@ -8,6 +8,7 @@
   "modules-center": ["clock"],
 
   "modules-right": [
+    "custom/uptime",
     "bluetooth",
     "network",
     "pulseaudio",
@@ -24,16 +25,14 @@
 
   "bluetooth": {
     "format": "󰂲",
-    "format-on": "{icon}",
-    "format-off": "{icon}",
-    "format-connected": "{icon}",
-    "format-icons": {
-      "on": "󰂯",
-      "off": "󰂲",
-      "connected": "󰂱"
-    },
-    "on-click": "blueman-manager",
-    "tooltip-format-connected": "{device_enumerate}"
+    "format-on": "󰂯",
+    "format-off": "󰂲",
+    "format-connected": "󰂱 <span size='small'>{device_battery_percentage}%</span>",
+    "format-connected-battery": "󰂱 <span size='small'>{device_battery_percentage}%</span>",
+    "tooltip-format-connected": "{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+    "on-click": "kitty -e bluetuith"
   },
 
   "mpris": {
@@ -67,10 +66,9 @@
   },
 
   "custom/uptime": {
-    "format": "{}",
-    "format-icon": [""],
+    "format": "  {}",
     "tooltip": false,
-    "interval": 1600,
+    "interval": 60,
     "exec": "$HOME/.config/waybar/scripts/uptime.sh"
   },
 
