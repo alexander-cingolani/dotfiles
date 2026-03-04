@@ -22,16 +22,12 @@ return {
             ensure_installed = vim.tbl_keys(servers),
         })
 
+        local lspconfig = require("lspconfig")
+        local capabilities = vim.lsp.protocol.make_client_capabilities()
+
         for name, config in pairs(servers) do
-            config.capabilities = vim.lsp.protocol.make_client_capabilities()
-
-
-            if config then
-                 config.name = name
-                 vim.lsp.config[name] = config
-            end
-
-            vim.lsp.enable(name)
+            config.capabilities = capabilities
+            lspconfig[name].setup(config)
         end
 
         vim.api.nvim_create_autocmd("LspAttach", {
