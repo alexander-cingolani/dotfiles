@@ -9,6 +9,7 @@ bindkey -e
 autoload -Uz compinit && compinit
 source ~/.config/zsh/plugins/fzf-tab/fzf-tab.plugin.zsh
 source ~/.config/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 setopt GLOB_DOTS
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # 3. HISTORY
