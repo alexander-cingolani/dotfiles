@@ -3,6 +3,7 @@ return {
     dependencies = {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
+        "WhoIsSethDaniel/mason-tool-installer.nvim",
     },
     config = function()
         require("mason").setup()
@@ -18,11 +19,22 @@ return {
             },
         }
 
+        local formatters = {
+            "stylua",
+            "isort",
+            "black",
+            "google-java-format",
+        }
+
         require("mason-lspconfig").setup({
             ensure_installed = vim.tbl_keys(servers),
         })
 
-        local capabilities = vim.lsp.protocol.make_client_capabilities()
+        require("mason-tool-installer").setup({
+            ensure_installed = formatters,
+        })
+
+        local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
         for name, config in pairs(servers) do
             config.capabilities = capabilities

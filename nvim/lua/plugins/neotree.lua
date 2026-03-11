@@ -11,6 +11,14 @@ return {
         vim.keymap.set('n', '<leader>e', ':Neotree toggle left<CR>', { desc = 'Toggle File Explorer' })
         
         require("neo-tree").setup({
+            event_handlers = {
+                {
+                    event = "file_opened",
+                    handler = function(file_path)
+                        require("neo-tree.command").execute({ action = "close" })
+                    end,
+                },
+            },
             filesystem = {
                 use_libuv_file_watcher = true, -- Automatically refresh on file changes
                 filtered_items = {

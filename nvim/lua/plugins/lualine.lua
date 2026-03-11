@@ -41,6 +41,20 @@ return {
       component_separators = '|',
       section_separators = '',
     },
+    sections = {
+      lualine_c = {
+        {
+          'filename',
+          file_status = true,
+          newfile_status = true,
+          symbols = {
+            modified = ' [+]',
+            readonly = ' [-]',
+            unnamed = '[No Name]',
+            newfile = ' [New]',
+          },
+        },
+      },
+    },
   }
 }
-
