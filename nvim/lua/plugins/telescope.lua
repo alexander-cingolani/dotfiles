@@ -3,10 +3,10 @@ return {
     branch = '0.1.x',
     cmd = 'Telescope',
     keys = {
-        { '<leader>ff', desc = 'Find Files' },
-        { '<leader>fg', desc = 'Grep Project' },
-        { '<leader>fb', desc = 'Find Buffers' },
-        { '<leader>fh', desc = 'Help Tags' },
+        { '<leader>ff', function() require('telescope.builtin').find_files() end, desc = 'Find Files' },
+        { '<leader>fg', function() require('telescope.builtin').live_grep() end, desc = 'Grep Project' },
+        { '<leader>fb', function() require('telescope.builtin').buffers() end, desc = 'Find Buffers' },
+        { '<leader>fh', function() require('telescope.builtin').help_tags() end, desc = 'Help Tags' },
     },
     dependencies = {
         'nvim-lua/plenary.nvim',
@@ -14,7 +14,6 @@ return {
     },
     config = function()
         local telescope = require('telescope')
-        local builtin = require('telescope.builtin')
 
         telescope.setup({
             extensions = {
@@ -27,10 +26,5 @@ return {
             }
         })
         telescope.load_extension('fzf')
-
-        vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Find Files' })
-        vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Grep Project' })
-        vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Find Buffers' })
-        vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Help Tags' })
     end
-}
+    }
