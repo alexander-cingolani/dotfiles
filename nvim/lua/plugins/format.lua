@@ -1,6 +1,6 @@
 return {
     "stevearc/conform.nvim",
-    event = { "BufWritePre", "InsertLeave" },
+    event = { "BufWritePre" },
     cmd = { "ConformInfo" },
     keys = {
         {
@@ -27,11 +27,5 @@ return {
     },
     config = function(_, opts)
         require("conform").setup(opts)
-        vim.api.nvim_create_autocmd("InsertLeave", {
-            pattern = "*",
-            callback = function()
-                require("conform").format({ async = true, lsp_fallback = true })
-            end,
-        })
     end,
 }
