@@ -26,7 +26,18 @@ vim.keymap.set("n", "<leader>p", function()
     vim.fn.jobstart({ "xdg-open", vim.fn.expand("%:p") })
 end, { desc = "Open file in browser" })
 
--- 5.
+-- 5. AUTOCOMMANDS
+-- ==========================================
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "markdown", "text" },
+    callback = function()
+        vim.opt_local.wrap = true
+        vim.opt_local.linebreak = true
+        vim.opt_local.breakindent = true
+    end,
+})
+
+-- 6.
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.loop or vim.uv).fs_stat(lazypath) then
     vim.fn.system({
