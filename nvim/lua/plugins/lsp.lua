@@ -10,7 +10,6 @@ return {
 
         local servers = {
             clangd = {},    -- C/C++
-            jdtls = {},     -- Java
             pyright = {},   -- Python
             lua_ls = {      -- Lua
                 settings = {
