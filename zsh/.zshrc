@@ -14,7 +14,8 @@ setopt HIST_REDUCE_BLANKS
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # 2. KEYMAP
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-bindkey -e
+bindkey -v
+export KEYTIMEOUT=1
 
 autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
 zle -N up-line-or-beginning-search
@@ -52,6 +53,8 @@ alias dl='cd ~/downloads'
 alias genpkg='pacman -Qqen > ~/.config/pkglist.txt && pacman -Qqem > ~/.config/aur-pkglist.txt'
 alias pcleanup='sudo pacman -Rns $(pacman -Qdtq)'
 
+# Reboot to windows
+alias wboot='systemctl reboot --boot-loader-entry=auto-windows'
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # 5. FUNCTIONS
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -73,4 +76,5 @@ rm() {
 # 6. TOOLS
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 eval "$(zoxide init zsh --cmd cd)"
-eval "$(starship init zsh)"
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+[[ -f ~/.config/zsh/.p10k.zsh ]] && source ~/.config/zsh/.p10k.zsh
