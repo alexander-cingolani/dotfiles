@@ -11,39 +11,28 @@
   font-weight: 500;
 }
 
-/* --- Left Modules --- */
 #workspaces,
-#custom-uptime,
+#clock,
 #mpris,
-#cpu {
+#cpu,
+#memory,
+#backlight,
+#pulseaudio,
+#network,
+#bluetooth,
+#battery,
+#tray {
   background-color: #1e1b1e;
   padding: 0.3rem 0.7rem;
   margin: 5px 0px;
-  border-radius: 6px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-  min-width: 0;
-  border: none;
-  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 #workspaces {
+  margin-left: 8px;
+  border-radius: 6px;
   padding: 2px;
-  margin-left: 7px;
-  margin-right: 5px;
-}
-
-#custom-uptime {
-  margin-right: 5px;
-}
-
-#mpris {
-  margin-right: 5px;
-}
-
-#custom-uptime:hover,
-#mpris:hover,
-#cpu:hover {
-  background-color: #2a272a;
 }
 
 #workspaces button {
@@ -53,7 +42,6 @@
   background: transparent;
   transition: all 0.2s ease-in-out;
   border: none;
-  outline: none;
 }
 
 #workspaces button.active {
@@ -62,113 +50,104 @@
   box-shadow: inset 0 0 0 1px rgba(204, 26, 32, 0.3);
 }
 
+#workspaces button.urgent {
+  color: #c89414;
+  background-color: rgba(200, 148, 20, 0.12);
+}
+
 #workspaces button:hover {
   background: #2a272a;
   color: #e8e6ec;
 }
 
-/* --- Center --- */
 #clock {
-  background-color: #1e1b1e;
-  padding: 0.3rem 0.7rem;
-  margin: 5px 0px;
   border-radius: 6px;
-  box-shadow: 0 1px 3px rgba(200, 148, 20, 0.2);
-  min-width: 0;
-  border: none;
   color: #c89414;
-  font-weight: 500;
-  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  box-shadow: 0 1px 3px rgba(200, 148, 20, 0.2);
 }
 
-/* --- Right Modules (Seamless Bar) --- */
-#bluetooth,
-#pulseaudio,
-#backlight,
-#network,
-#custom-lock,
-#battery {
-  background-color: #1e1b1e;
-  padding: 0.3rem 0.7rem;
-  margin: 5px 0px;
-  border-radius: 0;
-  box-shadow: none;
-  min-width: 0;
-  border: none;
-  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+#mpris {
+  border-radius: 6px;
+  margin-left: 5px;
+  color: #e8e6ec;
 }
 
-#bluetooth:hover,
-#pulseaudio:hover,
-#backlight:hover,
-#network:hover,
-#custom-lock:hover,
-#battery:hover {
-  background-color: #2a272a;
-}
-
-#bluetooth {
-  margin-left: 0px;
+#cpu {
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
+  color: #7a9aaa;
+  font-feature-settings: 'tnum';
 }
 
-#battery {
+#memory {
   border-top-right-radius: 6px;
   border-bottom-right-radius: 6px;
-  margin-right: 7px;
+  margin-right: 5px;
+  color: #7a9aaa;
+  border-left: 1px solid rgba(232, 230, 236, 0.1);
+  font-feature-settings: 'tnum';
 }
 
-/* --- Module Colors --- */
-#custom-uptime {
-  color: #9a98a8;
-}
-#cpu {
-  color: #7a9aaa;
+#backlight {
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  color: #c89414;
+  font-feature-settings: 'tnum';
 }
 #pulseaudio {
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  margin-right: 5px;
   color: #7a9aaa;
+  border-left: 1px solid rgba(232, 230, 236, 0.1);
+  font-feature-settings: 'tnum';
 }
-#backlight {
-  color: #c89414;
-}
+
 #network {
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
   color: #7a9aaa;
 }
 #network.disconnected {
   color: #cc1a20;
 }
-#custom-lock {
-  color: #9a98a8;
-}
 #bluetooth {
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  margin-right: 5px;
   color: #555255;
-  font-size: 16px;
+  border-left: 1px solid rgba(232, 230, 236, 0.1);
 }
-#bluetooth.on {
-  color: #7a9aaa;
-}
-#bluetooth.connected {
-  color: #5a8a8e;
-}
+#bluetooth.on { color: #7a9aaa; }
+#bluetooth.connected { color: #5a8a8e; }
+
 #battery {
+  border-radius: 6px;
+  margin-right: 8px;
   color: #5a8a65;
+  font-feature-settings: 'tnum';
 }
-#battery.charging {
-  color: #c89414;
-}
-#battery.warning:not(.charging) {
-  color: #d4780a;
+#battery.charging { color: #c89414; }
+#battery.warning:not(.charging) { color: #d4780a; }
+#battery.critical:not(.charging) { color: #cc1a20; }
+
+#clock:hover,
+#mpris:hover,
+#cpu:hover,
+#memory:hover,
+#backlight:hover,
+#pulseaudio:hover,
+#network:hover,
+#bluetooth:hover,
+#battery:hover {
+  background-color: #2a272a;
 }
 
-/* --- Tooltips --- */
 tooltip {
   background-color: #1e1b1e;
   color: #e8e6ec;
   padding: 5px 12px;
-  margin: 5px 0px;
   border-radius: 6px;
-  border: 1px solid rgba(200, 148, 20, 0.15);
+  border: 1px solid rgba(200, 148, 20, 0.2);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-  font-size: 12px;
 }

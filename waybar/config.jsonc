@@ -3,24 +3,29 @@
   "position": "top",
   "margin-bottom": -10,
   "spacing": 0,
-  "modules-left": ["hyprland/workspaces", "mpris", "cpu"],
+  "modules-left": ["hyprland/workspaces", "mpris"],
 
   "modules-center": ["clock"],
 
   "modules-right": [
-    "custom/uptime",
-    "bluetooth",
-    "network",
+    "cpu",
+    "memory",
+    "backlight",
     "pulseaudio",
+    "network",
+    "bluetooth",
     "battery"
   ],
 
   "hyprland/workspaces": {
     "format": "{name}: {icon}",
     "format-icons": {
-      "active": "",
-      "default": ""
-    }
+      "active": "󰊠",
+      "urgent": "󰀊",
+      "default": "󰝥"
+    },
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1"
   },
 
   "bluetooth": {
@@ -32,13 +37,14 @@
     "tooltip-format-connected": "{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
     "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
-    "on-click": "kitty -e bluetuith"
+    "on-click": "kitty -e bluetuith",
+    "on-click-right": "bluetoothctl show | grep -q 'Powered: yes' && bluetoothctl power off || bluetoothctl power on"
   },
 
   "mpris": {
-    "format": "  {artist} - {title}",
-    "format-paused": "  {artist} - {title}",
-    "max-length": 50,
+    "format": "󰝚 {artist} - {title}",
+    "format-paused": "󰏤 {artist} - {title}",
+    "max-length": 40,
     "interval": 1
   },
 
@@ -46,54 +52,65 @@
     "tooltip": true,
     "tooltip-format": "{:%A, %d %B %Y}",
     "format": "{:%H:%M}",
-    "interval": 60
+    "interval": 60,
+    "on-click": "kitty -e cal"
   },
 
   "network": {
     "format-wifi": "󰤢",
-    "format-ethernet": "󰈀 ",
-    "format-disconnected": "󰤠 ",
+    "format-ethernet": "󰈀",
+    "format-disconnected": "󰤠",
     "interval": 5,
     "tooltip-format": "{essid} ({signalStrength}%)",
-    "on-click": "kitty -e impala"
+    "on-click": "kitty -e impala",
+    "on-click-right": "nmcli radio wifi | grep -q enabled && nmcli radio wifi off || nmcli radio wifi on"
   },
 
   "cpu": {
     "interval": 1,
-    "format": "  {icon0}{icon1}{icon2}{icon3} {usage:>2}%",
-    "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
+    "format": "󰻠 <tt>{usage:>3}%</tt>",
     "on-click": "kitty -e htop"
   },
 
-  "custom/uptime": {
-    "format": "  {}",
-    "tooltip": false,
-    "interval": 60,
-    "exec": "$HOME/.config/waybar/scripts/uptime.sh"
+  "memory": {
+    "interval": 5,
+    "format": "󰍛 <tt>{percentage:>3}%</tt>",
+    "tooltip": true,
+    "tooltip-format": "Used: {used:0.1f}G / Total: {total:0.1f}G",
+    "on-click": "kitty -e btop"
+  },
+
+  "backlight": {
+    "format": "󰖨 <tt>{percent:>3}%</tt>",
+    "on-scroll-up": "brightnessctl set 1%+",
+    "on-scroll-down": "brightnessctl set 1%-",
+    "interval": 2
   },
 
   "pulseaudio": {
-    "format": "{icon}  {volume}%",
-    "format-muted": "",
+    "format": "{icon} <tt>{volume:>3}%</tt>",
+    "format-muted": "󰖁",
     "format-icons": {
-      "default": ["", "", " "]
+      "default": ["󰕿", "󰖀", "󰕾"]
     },
-    "on-click": "kitty -e wiremix"
+    "on-click": "kitty -e wiremix",
+    "on-scroll-up": "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 1%+",
+    "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-",
+    "interval": 2
   },
 
   "battery": {
-    "interval": 2,
+    "interval": 1,
     "states": {
       "warning": 30,
       "critical": 15
     },
-    "format": "{icon}  {capacity}%",
-
-    "format-full": "{icon}  {capacity}%",
-    "format-charging": " {capacity}%",
-    "format-plugged": " {capacity}%",
+    "format": "{icon}  <tt>{capacity:>3}%</tt>",
+    "format-full": "{icon}  <tt>{capacity:>3}%</tt>",
+    "format-charging": "󰚥 ",
+    "format-plugged": "󰚥 <tt>{capacity:>3}%</tt>",
     "format-alt": "{icon} {time}",
-    "format-icons": ["", "", "", "", ""]
+    "on-click": "~/.config/waybar/scripts/battery-charge-toggle.sh",
+    "format-icons": ["󰂎 ", "󰁻 ", "󰁾 ", "󰂀 ", "󰁹 "]
   }
-
 }
