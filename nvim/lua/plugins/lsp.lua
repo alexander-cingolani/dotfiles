@@ -22,6 +22,8 @@ return {
             yamlls = {},    -- YAML
             bashls = {},    -- Bash
             ts_ls = {},     -- JavaScript/TypeScript
+            taplo = {},     -- TOML
+            dockerls = {},  -- Dockerfile
         }
 
         local formatters = {
@@ -31,6 +33,7 @@ return {
             "google-java-format",
             "prettier",
             "shfmt",
+            "taplo",
         }
 
         require("mason-lspconfig").setup({

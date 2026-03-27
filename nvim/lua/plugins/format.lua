@@ -26,6 +26,7 @@ return {
             markdown = { "prettier" },
             javascript = { "prettier" },
             typescript = { "prettier" },
+            toml = { "taplo" },
             sh = { "shfmt" },
             bash = { "shfmt" },
         },
