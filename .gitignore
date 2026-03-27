@@ -12,6 +12,9 @@ obsidian/
 zsh/.zcompdump
 zsh/plugins/
 gh/
+bluetuith/
+nordvpn/
+
 # System & Desktop Environment
 pulse/
 systemd/
@@ -23,6 +26,7 @@ mpv/
 gthumb/
 wireplumber/
 mimeapps.list
+ibus/
 
 # Misc
 simple-update-notifier/
