@@ -16,6 +16,12 @@ return {
                     Lua = { diagnostics = { globals = { "vim" } } }
                 }
             },
+            html = {},      -- HTML
+            cssls = {},     -- CSS
+            jsonls = {},    -- JSON
+            yamlls = {},    -- YAML
+            bashls = {},    -- Bash
+            ts_ls = {},     -- JavaScript/TypeScript
         }
 
         local formatters = {
@@ -23,6 +29,8 @@ return {
             "isort",
             "black",
             "google-java-format",
+            "prettier",
+            "shfmt",
         }
 
         require("mason-lspconfig").setup({
