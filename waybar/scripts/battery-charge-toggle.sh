@@ -9,7 +9,13 @@ if ! grep -q 1 /sys/class/power_supply/AC*/online 2>/dev/null; then
 fi
 
 if [ -f "$STATE_FILE" ]; then
-    sudo tlp setcharge && rm "$STATE_FILE"
+    if sudo tlp setcharge; then
+        rm "$STATE_FILE"
+        notify-send -u normal -t 3000 -i battery-good-symbolic "Battery Cap Reinstated" "Charging capped at 65%.\n(Will charge up to 65% if currently below)"
+    fi
 else
-    sudo tlp fullcharge && touch "$STATE_FILE"
+    if sudo tlp fullcharge; then
+        touch "$STATE_FILE"
+        notify-send -u normal -t 3000 -i battery-full-charged-symbolic "Battery Cap Removed" "Charging to 100%."
+    fi
 fi
