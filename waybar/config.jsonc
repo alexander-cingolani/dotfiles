@@ -13,12 +13,21 @@
   "modules-right": [
     "cpu",
     "memory",
+    "custom/power-profile",
     "backlight",
     "pulseaudio",
     "network",
     "bluetooth",
     "battery"
   ],
+  "custom/power-profile": {
+    "format": "{}",
+    "exec": "~/.config/waybar/scripts/power-profile.sh",
+    "return-type": "json",
+    "on-click": "~/.config/waybar/scripts/power-profile.sh --toggle",
+    "interval": 30,
+    "tooltip": true
+  },
   "hyprland/workspaces": {
     "format": "{name}: {icon}",
     "format-icons": {
@@ -58,9 +67,9 @@
     "format-wifi": "󰤢",
     "format-ethernet": "󰈀",
     "format-disconnected": "󰤠",
-    "interval": 5,
+    "interval": 1,
     "tooltip-format": "{essid} ({signalStrength}%)",
-    "on-click": "kitty --class popup_tui -e impala",
+    "on-click": "kitty --class popup_tui -o confirm_os_window_close=0 -e impala",
     "on-click-right": "nmcli radio wifi | grep -q enabled && nmcli radio wifi off || nmcli radio wifi on"
   },
   "cpu": {
@@ -105,7 +114,7 @@
     "format-time": "{H}h {M}m",
     "format": "{icon} <tt>{capacity:>3}%</tt>",
     "format-full": "{icon}  <tt>{capacity:>3}%</tt>",
-    "format-charging": "󰚥",
+    "format-charging": "󰚥 <tt>{capacity}% | {time}</tt> left",
     "format-plugged": "󰚥 <tt>{capacity:>3}%</tt>",
     "format-alt": "{icon} <tt>{time}</tt>",
     "on-click": "~/.config/waybar/scripts/battery-charge-toggle.sh",

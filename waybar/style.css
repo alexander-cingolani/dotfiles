@@ -16,6 +16,7 @@
 #mpris,
 #cpu,
 #memory,
+#custom-power-profile,
 #backlight,
 #pulseaudio,
 #network,
@@ -80,12 +81,29 @@
 }
 
 #memory {
-  border-top-right-radius: 0.46rem;
-  border-bottom-right-radius: 0.46rem;
-  margin-right: 0.38rem;
   color: #7a9aaa;
   border-left: 0.08rem solid rgba(232, 230, 236, 0.1);
   font-feature-settings: "tnum";
+}
+
+#custom-power-profile {
+  border-top-right-radius: 0.46rem;
+  border-bottom-right-radius: 0.46rem;
+  margin-right: 0.38rem;
+  border-left: 0.08rem solid rgba(232, 230, 236, 0.1);
+  font-feature-settings: "tnum";
+}
+
+#custom-power-profile.low-power {
+  color: #5a8a65;
+}
+
+#custom-power-profile.balanced {
+  color: #c89414;
+}
+
+#custom-power-profile.performance {
+  color: #cc1a20;
 }
 
 #backlight {
@@ -145,6 +163,7 @@
 #mpris:hover,
 #cpu:hover,
 #memory:hover,
+#custom-power-profile:hover,
 #backlight:hover,
 #pulseaudio:hover,
 #network:hover,
