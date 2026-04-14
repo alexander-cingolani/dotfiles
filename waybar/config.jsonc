@@ -18,7 +18,8 @@
     "pulseaudio",
     "network",
     "bluetooth",
-    "battery"
+    "tray",
+    "custom/battery"
   ],
   "custom/power-profile": {
     "format": "{}",
@@ -105,25 +106,16 @@
     "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-",
     "interval": 2
   },
-  "battery": {
-    "interval": 1,
-    "states": {
-      "warning": 30,
-      "critical": 15
-    },
-    "format-time": "{H}h {M}m",
-    "format": "{icon} <tt>{capacity:>3}%</tt>",
-    "format-full": "{icon}  <tt>{capacity:>3}%</tt>",
-    "format-charging": "󰚥 <tt>{capacity}% | {time}</tt> left",
-    "format-plugged": "󰚥 <tt>{capacity:>3}%</tt>",
-    "format-alt": "{icon} <tt>{time}</tt>",
+  "custom/battery": {
+    "exec": "~/.config/waybar/scripts/battery.sh",
+    "return-type": "json",
+    "interval": 60,
+    "signal": 8,
     "on-click": "~/.config/waybar/scripts/battery-charge-toggle.sh",
-    "format-icons": [
-      "󰂎",
-      "󰁻",
-      "󰁾",
-      "󰂀",
-      "󰁹"
-    ]
+    "format": "{}"
+  },
+  "tray": {
+    "icon-size": 16,
+    "spacing": 8
   }
 }

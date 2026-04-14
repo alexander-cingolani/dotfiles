@@ -1,7 +1,12 @@
+bitwarden-bin
 bluetuith-bin
 google-chrome
 grimblast-git
 libinput-gestures
+nordvpn-bin
 pear-desktop
 python-pywal16
+visual-studio-code-bin
 yay
+zen-browser-bin
+zsh-theme-powerlevel10k

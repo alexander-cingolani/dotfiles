@@ -19,3 +19,10 @@ else
         notify-send -u normal -t 3000 -i battery-full-charged-symbolic "Battery Cap Removed" "Charging to 100%."
     fi
 fi
+
+# Multi-stage refresh strategy:
+# 1. Instant (0.1s) for immediate UI feedback (colors)
+(sleep 0.1 && pkill -SIGRTMIN+8 waybar) &
+
+# 2. Sequential background refreshes to catch the hardware estimate (2s, 5s, 10s)
+(for s in 2 5 10; do sleep $s; pkill -SIGRTMIN+8 waybar; done) &
