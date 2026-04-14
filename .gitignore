@@ -16,6 +16,7 @@ bluetuith/
 nordvpn/
 Bitwarden/
 Code/
+.geminiignore
 
 # System & Desktop Environment
 pulse/
