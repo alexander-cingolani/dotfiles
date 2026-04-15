@@ -21,9 +21,9 @@
 #pulseaudio,
 #network,
 #bluetooth,
-#battery,
+#custom-battery,
 #tray {
-  background-color: #1e1b1e;
+  background-color: rgba(30, 27, 30, 0.85);
   padding: 0.3rem 0.7rem;
   margin: 0.38rem 0;
   box-shadow: 0 0.08rem 0.23rem rgba(0, 0, 0, 0.3);
@@ -57,7 +57,7 @@
 }
 
 #workspaces button:hover {
-  background: #2a272a;
+  background: rgba(42, 39, 42, 0.7);
   color: #e8e6ec;
 }
 
@@ -143,20 +143,25 @@
   color: #5a8a8e;
 }
 
-#battery {
+#custom-battery {
   border-radius: 0.46rem;
   margin-right: 0.62rem;
   color: #5a8a65;
   font-feature-settings: "tnum";
 }
-#battery.charging {
+#custom-battery.charging {
   color: #c89414;
 }
-#battery.warning:not(.charging) {
+#custom-battery.warning:not(.charging) {
   color: #d4780a;
 }
-#battery.critical:not(.charging) {
+#custom-battery.critical:not(.charging) {
   color: #cc1a20;
+}
+
+#tray {
+  border-radius: 0.46rem;
+  margin-right: 0.38rem;
 }
 
 #clock:hover,
@@ -168,12 +173,12 @@
 #pulseaudio:hover,
 #network:hover,
 #bluetooth:hover,
-#battery:hover {
-  background-color: #2a272a;
+#custom-battery:hover {
+  background-color: rgba(42, 39, 42, 0.7);
 }
 
 tooltip {
-  background-color: #1e1b1e;
+  background-color: rgba(30, 27, 30, 0.9);
   color: #e8e6ec;
   padding: 0.38rem 0.92rem;
   border-radius: 0.46rem;

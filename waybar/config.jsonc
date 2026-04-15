@@ -48,7 +48,7 @@
     "tooltip-format-connected": "{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
     "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
-    "on-click": "kitty --class popup_tui -o window_padding_width=5 -o confirm_os_window_close=0 -e bluetuith",
+    "on-click": "~/.config/waybar/scripts/toggle-popup.sh popup_tui_blue kitty --class popup_tui_blue -o window_padding_width=5 -o confirm_os_window_close=0 -e bluetuith",
     "on-click-right": "bluetoothctl show | grep -q 'Powered: yes' && bluetoothctl power off || bluetoothctl power on"
   },
   "mpris": {
@@ -70,20 +70,20 @@
     "format-disconnected": "󰤠",
     "interval": 1,
     "tooltip-format": "{essid} ({signalStrength}%)",
-    "on-click": "kitty --class popup_tui -o confirm_os_window_close=0 -e impala",
+    "on-click": "~/.config/waybar/scripts/toggle-popup.sh popup_tui_net kitty --class popup_tui_net -o confirm_os_window_close=0 -e impala",
     "on-click-right": "nmcli radio wifi | grep -q enabled && nmcli radio wifi off || nmcli radio wifi on"
   },
   "cpu": {
     "interval": 1,
     "format": "󰻠 <tt>{usage:>3}%</tt>",
-    "on-click": "kitty --class popup_tui -o window_padding_width=5 -o confirm_os_window_close=0 -e btop -c ~/.config/btop/cpu.conf"
+    "on-click": "~/.config/waybar/scripts/toggle-popup.sh popup_tui_cpu kitty --class popup_tui_cpu -o window_padding_width=5 -o confirm_os_window_close=0 -e btop -c ~/.config/btop/cpu.conf"
   },
   "memory": {
     "interval": 5,
     "format": "󰍛 <tt>{percentage:>3}%</tt>",
     "tooltip": true,
     "tooltip-format": "Used: {used:0.1f}G / Total: {total:0.1f}G",
-    "on-click": "kitty --class popup_tui -o window_padding_width=5 -o confirm_os_window_close=0 -e btop -c ~/.config/btop/mem.conf"
+    "on-click": "~/.config/waybar/scripts/toggle-popup.sh popup_tui_mem kitty --class popup_tui_mem -o window_padding_width=5 -o confirm_os_window_close=0 -e btop -c ~/.config/btop/mem.conf"
   },
   "backlight": {
     "format": "󰖨 <tt>{percent:>3}%</tt>",
@@ -101,7 +101,7 @@
         "󰕾"
       ]
     },
-    "on-click": "kitty --class popup_tui -o window_padding_width=5 -o confirm_os_window_close=0 -e wiremix",
+    "on-click": "~/.config/waybar/scripts/toggle-popup.sh popup_tui_audio kitty --class popup_tui_audio -o window_padding_width=5 -o confirm_os_window_close=0 -e wiremix",
     "on-scroll-up": "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 1%+",
     "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-",
     "interval": 2
