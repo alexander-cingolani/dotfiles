@@ -16,6 +16,7 @@ max-icon-size=48
 default-timeout=8
 ignore-timeout=1
 font=SF Pro Text 10
+on-button-left=invoke-default-action
 
 # Progress Bar
 progress-color=over #c89414
@@ -35,3 +36,7 @@ default-timeout=5000
 border-color=#c89414
 text-color=#c89414
 default-timeout=0
+
+[app-name=power-profile]
+group-by=app-name
+format=<b>%s</b>\n%b
