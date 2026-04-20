@@ -13,7 +13,6 @@
   "modules-right": [
     "cpu",
     "memory",
-    "custom/power-profile",
     "backlight",
     "pulseaudio",
     "network",
@@ -21,14 +20,6 @@
     "tray",
     "custom/battery"
   ],
-  "custom/power-profile": {
-    "format": "{}",
-    "exec": "~/.config/waybar/scripts/power-profile.sh",
-    "return-type": "json",
-    "on-click": "~/.config/waybar/scripts/power-profile.sh --toggle",
-    "interval": 30,
-    "tooltip": true
-  },
   "hyprland/workspaces": {
     "format": "{name}: {icon}",
     "format-icons": {
@@ -62,7 +53,7 @@
     "tooltip-format": "{:%A, %d %B %Y}",
     "format": "{:%H:%M}",
     "interval": 60,
-    "on-click": "kitty -e cal"
+    "on-click": "~/.config/waybar/scripts/toggle-popup.sh popup_tui_cal kitty --class popup_tui_cal -o window_padding_width=5 -o confirm_os_window_close=0 -e calcure"
   },
   "network": {
     "format-wifi": "󰤢",
