@@ -5,7 +5,7 @@
   "spacing": 0,
   "modules-left": [
     "hyprland/workspaces",
-    "mpris"
+    "group/mpris-merged"
   ],
   "modules-center": [
     "clock"
@@ -60,10 +60,27 @@
     "on-click": "~/.config/waybar/scripts/toggle-popup.sh popup_tui_blue kitty --class popup_tui_blue -o window_padding_width=5 -o confirm_os_window_close=0 -e bluetuith",
     "on-click-right": "bluetoothctl show | grep -q 'Powered: yes' && bluetoothctl power off || bluetoothctl power on"
   },
+  "group/mpris-merged": {
+    "orientation": "horizontal",
+    "modules": [
+      "mpris",
+      "custom/player_index"
+    ]
+  },
   "mpris": {
     "format": "󰝚 {artist} - {title}",
     "format-paused": "󰏤 {artist} - {title}",
-    "max-length": 40
+    "max-length": 40,
+    "on-scroll-up": "playerctld shift; pkill -RTMIN+7 waybar",
+    "on-scroll-down": "playerctld unshift; pkill -RTMIN+7 waybar",
+    "on-click": "playerctl play-pause; pkill -RTMIN+7 waybar"
+  },
+  "custom/player_index": {
+    "format": "{}",
+    "exec": "~/.config/waybar/scripts/player-index.sh",
+    "interval": 5,
+    "signal": 7,
+    "on-click": "playerctld shift; pkill -RTMIN+7 waybar"
   },
   "clock": {
     "tooltip": true,
