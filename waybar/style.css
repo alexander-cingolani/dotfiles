@@ -64,6 +64,12 @@
   color: #e8e6ec;
 }
 
+#clock {
+  border-radius: 0.46rem;
+  color: #c89414;
+  box-shadow: 0 0.08rem 0.23rem rgba(200, 148, 20, 0.2);
+}
+
 #mpris-merged {
   padding: 0.3rem 0;
   margin-left: 0.38rem;
