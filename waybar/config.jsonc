@@ -11,12 +11,9 @@
     "clock"
   ],
   "modules-right": [
-    "cpu",
-    "memory",
-    "backlight",
-    "pulseaudio",
-    "network",
-    "bluetooth",
+    "group/hardware",
+    "group/media",
+    "group/connectivity",
     "tray",
     "custom/battery"
   ],
@@ -29,6 +26,27 @@
     },
     "on-scroll-up": "hyprctl dispatch workspace e+1",
     "on-scroll-down": "hyprctl dispatch workspace e-1"
+  },
+  "group/hardware": {
+    "orientation": "horizontal",
+    "modules": [
+      "cpu",
+      "memory"
+    ]
+  },
+  "group/media": {
+    "orientation": "horizontal",
+    "modules": [
+      "backlight",
+      "pulseaudio"
+    ]
+  },
+  "group/connectivity": {
+    "orientation": "horizontal",
+    "modules": [
+      "network",
+      "bluetooth"
+    ]
   },
   "bluetooth": {
     "format": "󰂲",
@@ -45,8 +63,7 @@
   "mpris": {
     "format": "󰝚 {artist} - {title}",
     "format-paused": "󰏤 {artist} - {title}",
-    "max-length": 40,
-    "interval": 1
+    "max-length": 40
   },
   "clock": {
     "tooltip": true,
@@ -78,8 +95,7 @@
   },
   "backlight": {
     "format": "󰖨 <tt>{percent:>3}%</tt>",
-    "on-scroll-up": "brightnessctl set 1%+",
-    "on-scroll-down": "brightnessctl set 1%-",
+    "scroll-step": 1.0,
     "interval": 2
   },
   "pulseaudio": {
@@ -93,8 +109,7 @@
       ]
     },
     "on-click": "~/.config/waybar/scripts/toggle-popup.sh popup_tui_audio kitty --class popup_tui_audio -o window_padding_width=5 -o confirm_os_window_close=0 -e wiremix",
-    "on-scroll-up": "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 1%+",
-    "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-",
+    "scroll-step": 1.0,
     "interval": 2
   },
   "custom/battery": {

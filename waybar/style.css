@@ -14,19 +14,24 @@
 #workspaces,
 #clock,
 #mpris,
-#cpu,
-#memory,
-#backlight,
-#pulseaudio,
-#network,
-#bluetooth,
+#hardware,
+#media,
+#connectivity,
 #custom-battery,
 #tray {
   background-color: rgba(30, 27, 30, 0.85);
-  padding: 0.3rem 0.7rem;
   margin: 0.38rem 0;
   box-shadow: 0 0.08rem 0.23rem rgba(0, 0, 0, 0.3);
   transition: all 0.2s ease-in-out;
+}
+
+/* Individual modules with standard padding */
+#workspaces,
+#clock,
+#mpris,
+#custom-battery,
+#tray {
+  padding: 0.3rem 0.7rem;
 }
 
 #workspaces {
@@ -72,9 +77,29 @@
   color: #e8e6ec;
 }
 
+/* Group Containers */
+#hardware,
+#media,
+#connectivity {
+  border-radius: 0.46rem;
+  margin-right: 0.38rem;
+  padding: 0.3rem 0;
+}
+
+/* Internal Modules Padding */
+#cpu, #memory, #backlight, #pulseaudio, #network, #bluetooth {
+  padding: 0 0.45rem;
+}
+
+/* Outer Edge Padding for Groups */
+#cpu, #backlight, #network {
+  padding-left: 0.7rem;
+}
+#memory, #pulseaudio, #bluetooth {
+  padding-right: 0.7rem;
+}
+
 #cpu {
-  border-top-left-radius: 0.46rem;
-  border-bottom-left-radius: 0.46rem;
   color: #7a9aaa;
   font-feature-settings: "tnum";
 }
@@ -82,39 +107,28 @@
 #memory {
   color: #7a9aaa;
   border-left: 0.08rem solid rgba(232, 230, 236, 0.1);
-  border-top-right-radius: 0.46rem;
-  border-bottom-right-radius: 0.46rem;
-  margin-right: 0.38rem;
   font-feature-settings: "tnum";
 }
 
 #backlight {
-  border-top-left-radius: 0.46rem;
-  border-bottom-left-radius: 0.46rem;
   color: #c89414;
   font-feature-settings: "tnum";
 }
+
 #pulseaudio {
-  border-top-right-radius: 0.46rem;
-  border-bottom-right-radius: 0.46rem;
-  margin-right: 0.38rem;
   color: #7a9aaa;
   border-left: 0.08rem solid rgba(232, 230, 236, 0.1);
   font-feature-settings: "tnum";
 }
 
 #network {
-  border-top-left-radius: 0.46rem;
-  border-bottom-left-radius: 0.46rem;
   color: #7a9aaa;
 }
 #network.disconnected {
   color: #cc1a20;
 }
+
 #bluetooth {
-  border-top-right-radius: 0.46rem;
-  border-bottom-right-radius: 0.46rem;
-  margin-right: 0.38rem;
   color: #555255;
   border-left: 0.08rem solid rgba(232, 230, 236, 0.1);
 }
@@ -148,12 +162,9 @@
 
 #clock:hover,
 #mpris:hover,
-#cpu:hover,
-#memory:hover,
-#backlight:hover,
-#pulseaudio:hover,
-#network:hover,
-#bluetooth:hover,
+#hardware:hover,
+#media:hover,
+#connectivity:hover,
 #custom-battery:hover {
   background-color: rgba(42, 39, 42, 0.7);
 }
