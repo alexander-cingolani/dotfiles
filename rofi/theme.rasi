@@ -1,9 +1,9 @@
 * {
     font:           "Inter 13";
 
-    bg:             #1e1b1e;
-    bg-alt:         #252225;
-    bg-hover:       #2a272a;
+    bg:             #1e1b1ee6;
+    bg-alt:         #252225e6;
+    bg-hover:       #2a272ae6;
     fg:             #e8e6ec;
     fg-sub:         #9a98a8;
     accent:         #cc1a20;
