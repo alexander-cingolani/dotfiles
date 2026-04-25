@@ -1,3 +1,22 @@
+@define-color bg-base rgba(30, 27, 30, 0.85);
+@define-color bg-hover rgba(42, 39, 42, 0.7);
+@define-color bg-tooltip rgba(30, 27, 30, 0.9);
+
+@define-color text-primary #e8e6ec;
+@define-color text-secondary #7a9aaa;
+@define-color text-muted #9a98a8;
+@define-color text-dark #555255;
+
+@define-color accent-active #cc1a20;
+@define-color accent-warning #c89414;
+@define-color accent-critical #d4780a;
+@define-color accent-success #5a8a65;
+@define-color accent-info #5a8a8e;
+
+@define-color border-light rgba(232, 230, 236, 0.1);
+@define-color shadow-dark rgba(0, 0, 0, 0.3);
+@define-color shadow-heavy rgba(0, 0, 0, 0.4);
+
 * {
   font-size: 13px;
   font-family: "SF Pro Text", "Inter", "Segoe UI", sans-serif;
@@ -7,10 +26,11 @@
 
 #waybar {
   background: transparent;
-  color: #e8e6ec;
+  color: @text-primary;
   font-weight: 500;
 }
 
+/* Base module container styling */
 #workspaces,
 #clock,
 #mpris-merged,
@@ -19,13 +39,13 @@
 #connectivity,
 #custom-battery,
 #tray {
-  background-color: rgba(30, 27, 30, 0.85);
+  background-color: @bg-base;
   margin: 0.38rem 0;
-  box-shadow: 0 0.08rem 0.23rem rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0.08rem 0.23rem @shadow-dark;
   transition: all 0.2s ease-in-out;
+  border-radius: 0.46rem;
 }
 
-/* Individual modules with standard padding */
 #workspaces,
 #clock,
 #custom-battery,
@@ -33,14 +53,14 @@
   padding: 0.3rem 0.7rem;
 }
 
+/* Individual Module Overrides */
 #workspaces {
   margin-left: 0.62rem;
-  border-radius: 0.46rem;
   padding: 0.15rem;
 }
 
 #workspaces button {
-  color: #9a98a8;
+  color: @text-muted;
   border-radius: 0.38rem;
   padding: 0.3rem 0.6rem;
   background: transparent;
@@ -49,50 +69,47 @@
 }
 
 #workspaces button.active {
-  color: #cc1a20;
+  color: @accent-active;
   background-color: rgba(204, 26, 32, 0.12);
   box-shadow: inset 0 0 0 0.08rem rgba(204, 26, 32, 0.3);
 }
 
 #workspaces button.urgent {
-  color: #c89414;
+  color: @accent-warning;
   background-color: rgba(200, 148, 20, 0.12);
 }
 
 #workspaces button:hover {
-  background: rgba(42, 39, 42, 0.7);
-  color: #e8e6ec;
+  background: @bg-hover;
+  color: @text-primary;
 }
 
 #clock {
-  border-radius: 0.46rem;
-  color: #c89414;
+  color: @accent-warning;
   box-shadow: 0 0.08rem 0.23rem rgba(200, 148, 20, 0.2);
 }
 
 #mpris-merged {
   padding: 0.3rem 0;
   margin-left: 0.38rem;
-  border-radius: 0.46rem;
 }
 
 #mpris {
-  color: #e8e6ec;
+  color: @text-primary;
   padding-left: 0.7rem;
   padding-right: 0.4rem;
 }
 
 #custom-player_index {
-  color: #7a9aaa;
+  color: @text-secondary;
   padding-right: 0.7rem;
   padding-left: 0.4rem;
 }
 
-/* Group Containers */
+/* Grouped modules (hardware, media, connectivity) */
 #hardware,
 #media,
 #connectivity {
-  border-radius: 0.46rem;
   margin-right: 0.38rem;
   padding: 0.3rem 0;
 }
@@ -102,89 +119,61 @@
   padding: 0 0.45rem;
 }
 
-/* Outer Edge Padding for Groups */
-#cpu, #backlight, #network {
-  padding-left: 0.7rem;
+/* Edge padding for groups */
+#cpu, #backlight, #network { padding-left: 0.7rem; }
+#memory, #pulseaudio, #bluetooth { padding-right: 0.7rem; }
+
+/* Numeric display formatting */
+#cpu, #memory, #backlight, #pulseaudio, #custom-battery {
+  font-feature-settings: "tnum";
 }
+
+#cpu, #memory, #pulseaudio {
+  color: @text-secondary;
+}
+
 #memory, #pulseaudio, #bluetooth {
-  padding-right: 0.7rem;
-}
-
-#cpu {
-  color: #7a9aaa;
-  font-feature-settings: "tnum";
-}
-
-#memory {
-  color: #7a9aaa;
-  border-left: 0.08rem solid rgba(232, 230, 236, 0.1);
-  font-feature-settings: "tnum";
+  border-left: 0.08rem solid @border-light;
 }
 
 #backlight {
-  color: #c89414;
-  font-feature-settings: "tnum";
+  color: @accent-warning;
 }
 
-#pulseaudio {
-  color: #7a9aaa;
-  border-left: 0.08rem solid rgba(232, 230, 236, 0.1);
-  font-feature-settings: "tnum";
-}
+#network { color: @text-secondary; }
+#network.disconnected { color: @accent-active; }
 
-#network {
-  color: #7a9aaa;
-}
-#network.disconnected {
-  color: #cc1a20;
-}
-
-#bluetooth {
-  color: #555255;
-  border-left: 0.08rem solid rgba(232, 230, 236, 0.1);
-}
-#bluetooth.on {
-  color: #7a9aaa;
-}
-#bluetooth.connected {
-  color: #5a8a8e;
-}
+#bluetooth { color: @text-dark; }
+#bluetooth.on { color: @text-secondary; }
+#bluetooth.connected { color: @accent-info; }
 
 #custom-battery {
-  border-radius: 0.46rem;
   margin-right: 0.62rem;
-  color: #5a8a65;
-  font-feature-settings: "tnum";
+  color: @accent-success;
 }
-#custom-battery.charging {
-  color: #c89414;
-}
-#custom-battery.warning:not(.charging) {
-  color: #d4780a;
-}
-#custom-battery.critical:not(.charging) {
-  color: #cc1a20;
-}
+#custom-battery.charging { color: @accent-warning; }
+#custom-battery.warning:not(.charging) { color: @accent-critical; }
+#custom-battery.critical:not(.charging) { color: @accent-active; }
 
 #tray {
-  border-radius: 0.46rem;
   margin-right: 0.38rem;
 }
 
+/* Hover effects for main module containers */
 #clock:hover,
 #mpris-merged:hover,
 #hardware:hover,
 #media:hover,
 #connectivity:hover,
 #custom-battery:hover {
-  background-color: rgba(42, 39, 42, 0.7);
+  background-color: @bg-hover;
 }
 
 tooltip {
-  background-color: rgba(30, 27, 30, 0.9);
-  color: #e8e6ec;
+  background-color: @bg-tooltip;
+  color: @text-primary;
   padding: 0.38rem 0.92rem;
   border-radius: 0.46rem;
   border: 0.08rem solid rgba(200, 148, 20, 0.2);
-  box-shadow: 0 0.31rem 0.92rem rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0.31rem 0.92rem @shadow-heavy;
 }

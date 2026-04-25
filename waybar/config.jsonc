@@ -3,6 +3,7 @@
   "position": "top",
   "margin-bottom": -10,
   "spacing": 0,
+  "reload_style_on_change": true,
   "modules-left": [
     "hyprland/workspaces",
     "group/mpris-merged"
